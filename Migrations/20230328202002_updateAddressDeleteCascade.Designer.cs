@@ -12,7 +12,7 @@ using WebApplication1.Models;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(AdventureWorksLt2019Context))]
-    [Migration("20230328195344_updateAddressDeleteCascade")]
+    [Migration("20230328202002_updateAddressDeleteCascade")]
     partial class updateAddressDeleteCascade
     {
         /// <inheritdoc />
