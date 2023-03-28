@@ -13,5 +13,6 @@ var app = builder.Build();
 
 // ENTITY METHODS
 app.MapGet("/address", AddressMethods.GetAddresses);
+app.MapGet("/addressbyid", AddressMethods.GetAddressById);
 
 app.Run();

@@ -10,5 +10,20 @@ namespace WebApplication1.EntityMethods
                 .Take(maxResults)
                 .ToList());
         }
+
+        public static IResult GetAddressById(AdventureWorksLt2019Context db, int id)
+        {
+            Address address = db.Addresses.Find(id);
+            
+            if(address == null)
+            {
+                return Results.BadRequest();
+            } else
+            {
+                return Results.Ok(address);
+            }
+        }
     }
+
+
 }
