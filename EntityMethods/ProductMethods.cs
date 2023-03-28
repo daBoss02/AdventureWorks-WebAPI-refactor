@@ -22,5 +22,19 @@ namespace WebApplication1.EntityMethods
                 return Results.Ok(product);
             }
         }
+
+        public static IResult DeleteProduct(AdventureWorksLt2019Context db, int id)
+        {
+            Product product = db.Products.Find(id);
+
+            if(product == null)
+            {
+                return Results.BadRequest();
+            }
+
+            db.Products.Remove(product);
+            db.SaveChanges();
+            return Results.NoContent();
+        }
     }
 }
