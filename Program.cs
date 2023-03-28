@@ -19,6 +19,7 @@ app.MapGet("/productbyid", ProductMethods.GetProductById);
 //Customers Methods
 app.MapGet("/customer", CustomerMethods.GetCustomers);
 app.MapGet("/customerbyid", CustomerMethods.GetCustomerById);
+app.MapDelete("/customer", CustomerMethods.DeleteCustomer);
 
 // Address METHODS
 app.MapGet("/address", AddressMethods.GetAddresses);
