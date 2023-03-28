@@ -11,4 +11,7 @@ builder.Services.AddDbContext<AdventureWorksLt2019Context>(options => options.Us
 
 var app = builder.Build();
 
+// ENTITY METHODS
+app.MapGet("/address", AddressMethods.GetAddresses);
+
 app.Run();
