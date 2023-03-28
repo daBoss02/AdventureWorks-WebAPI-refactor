@@ -13,5 +13,6 @@ var app = builder.Build();
 
 //Customers Methods
 app.MapGet("/customer", CustomerMethods.GetCustomers);
+app.MapGet("/customerbyid", CustomerMethods.GetCustomerById);
 
 app.Run();

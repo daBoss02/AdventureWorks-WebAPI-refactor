@@ -7,5 +7,20 @@ namespace WebApplication1.EntityMethods
         {
             return Results.Ok(db.Customers.Take(maxResults).ToList());
         }
+
+        public static IResult GetCustomerById(AdventureWorksLt2019Context db,int id)
+        {
+            Customer customer = db.Customers.Find(id);
+            if(customer == null)
+            {
+                return Results.BadRequest();
+            }
+            else
+            {
+                return Results.Ok();
+            }
+        }
     }
+
+    
 }
