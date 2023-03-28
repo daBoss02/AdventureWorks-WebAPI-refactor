@@ -14,6 +14,7 @@ var app = builder.Build();
 
 // PRODUCT METHODS
 app.MapGet("/product", ProductMethods.GetProducts);
+app.MapGet("/productbyid", ProductMethods.GetProductById);
 
 //Customers Methods
 app.MapGet("/customer", CustomerMethods.GetCustomers);
