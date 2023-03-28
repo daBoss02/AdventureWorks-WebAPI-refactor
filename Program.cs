@@ -23,6 +23,6 @@ app.MapGet("/customerbyid", CustomerMethods.GetCustomerById);
 // Address METHODS
 app.MapGet("/address", AddressMethods.GetAddresses);
 app.MapGet("/addressbyid", AddressMethods.GetAddressById);
-app.MapDelete("/address", AddressMethods.DeleteAddress);
+app.MapDelete("/address/delete", AddressMethods.DeleteAddress);
 
 app.Run();
