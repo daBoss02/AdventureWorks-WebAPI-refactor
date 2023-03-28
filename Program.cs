@@ -21,6 +21,7 @@ app.MapGet("/customerbyid", CustomerMethods.GetCustomerById);
 
 // Address METHODS
 app.MapGet("/address", AddressMethods.GetAddresses);
+app.MapGet("/addressbyid", AddressMethods.GetAddressById);
 
 
 app.Run();
