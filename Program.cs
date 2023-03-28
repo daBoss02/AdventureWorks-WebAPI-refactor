@@ -29,5 +29,6 @@ app.MapDelete("/address/delete", AddressMethods.DeleteAddress);
 // Sales Order Header METHODS
 app.MapGet("/salesheader", SalesOrderHeaderMethods.GetSalesOrderHeaders);
 app.MapGet("/salesheaderbyid", SalesOrderHeaderMethods.GetSalesOrderHeaderById);
+app.MapDelete("/salesheader/delete", SalesOrderHeaderMethods.DeleteSalesOrderHeader);
 
 app.Run();

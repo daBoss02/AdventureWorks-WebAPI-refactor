@@ -22,5 +22,19 @@ namespace WebApplication1.EntityMethods
                 return Results.Ok(orderHeader);
             }
         }
+
+        public static IResult DeleteSalesOrderHeader(AdventureWorksLt2019Context db, int id)
+        {
+            SalesOrderHeader orderHeader = db.SalesOrderHeaders.Find(id);
+
+            if (orderHeader == null)
+            {
+                return Results.BadRequest();
+
+            }
+            db.SalesOrderHeaders.Remove(orderHeader);
+            db.SaveChanges();
+            return Results.NoContent();
+        }
     }
 }
