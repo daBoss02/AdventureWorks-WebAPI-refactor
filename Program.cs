@@ -24,6 +24,6 @@ app.MapDelete("/customer/delete", CustomerMethods.DeleteCustomer);
 // Address METHODS
 app.MapGet("/address", AddressMethods.GetAddresses);
 app.MapGet("/addressbyid", AddressMethods.GetAddressById);
-
+app.MapDelete("/address/delete", AddressMethods.DeleteAddress);
 
 app.Run();

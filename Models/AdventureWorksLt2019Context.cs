@@ -202,11 +202,11 @@ public partial class AdventureWorksLt2019Context : DbContext
 
             entity.HasOne(d => d.Address).WithMany(p => p.CustomerAddresses)
                 .HasForeignKey(d => d.AddressId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.Cascade);
 
             entity.HasOne(d => d.Customer).WithMany(p => p.CustomerAddresses)
                 .HasForeignKey(d => d.CustomerId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<ErrorLog>(entity =>

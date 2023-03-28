@@ -528,8 +528,8 @@ namespace WebApplication1.Migrations
                 schema: "SalesLT",
                 table: "SalesOrderHeader",
                 column: "ShipToAddressID");
+        
         }
-
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
