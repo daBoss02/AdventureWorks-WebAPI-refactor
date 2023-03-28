@@ -11,4 +11,7 @@ builder.Services.AddDbContext<AdventureWorksLt2019Context>(options => options.Us
 
 var app = builder.Build();
 
+//Customers Methods
+app.MapGet("/customer", CustomerMethods.GetCustomers);
+
 app.Run();
