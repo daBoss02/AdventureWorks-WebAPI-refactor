@@ -14,4 +14,7 @@ var app = builder.Build();
 //Customers Methods
 app.MapGet("/customer", CustomerMethods.GetCustomers);
 
+// Address METHODS
+app.MapGet("/address", AddressMethods.GetAddresses);
+
 app.Run();
