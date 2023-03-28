@@ -11,13 +11,14 @@ namespace WebApplication1.EntityMethods
         public static IResult GetCustomerById(AdventureWorksLt2019Context db,int id)
         {
             Customer customer = db.Customers.Find(id);
+
             if(customer == null)
             {
                 return Results.BadRequest();
             }
             else
             {
-                return Results.Ok();
+                return Results.Ok(customer);
             }
         }
     }
