@@ -25,6 +25,7 @@ app.MapGet("/customer", CustomerMethods.GetCustomers);
 app.MapGet("/customerbyid", CustomerMethods.GetCustomerById);
 app.MapDelete("/customer/delete", CustomerMethods.DeleteCustomer);
 
+
 // Address METHODS
 app.MapGet("/address", AddressMethods.GetAddresses);
 app.MapGet("/addressbyid", AddressMethods.GetAddressById);
