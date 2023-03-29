@@ -97,7 +97,7 @@ namespace WebApplication1.EntityMethods
                     {
                         customerToUpdate.FirstName = inputCustomer.FirstName;
                     }
-                    if(!String.IsNullOrEmpty(customerToUpdate.MiddleName))
+                    if(!String.IsNullOrEmpty(inputCustomer.MiddleName))
                     {
                         customerToUpdate.MiddleName = inputCustomer.MiddleName;
                     }
