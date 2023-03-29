@@ -30,7 +30,7 @@ app.MapDelete("/customer/delete", CustomerMethods.DeleteCustomer);
 app.MapGet("/address", AddressMethods.GetAddresses);
 app.MapGet("/addressbyid", AddressMethods.GetAddressById);
 app.MapDelete("/address/delete", AddressMethods.DeleteAddress);
-app.MapPost("/product", AddressMethods.CreateAddress);
+app.MapPost("/address", AddressMethods.CreateAddress);
 
 // Sales Order Header METHODS
 app.MapGet("/salesheader", SalesOrderHeaderMethods.GetSalesOrderHeaders);
