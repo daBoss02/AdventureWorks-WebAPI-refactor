@@ -16,6 +16,7 @@ var app = builder.Build();
 app.MapGet("/product", ProductMethods.GetProducts);
 app.MapGet("/productbyid", ProductMethods.GetProductById);
 app.MapDelete("/product/delete", ProductMethods.DeleteProduct);
+app.MapPost("/product", ProductMethods.CreateProduct);
 
 //Customers Methods
 app.MapGet("/customer", CustomerMethods.GetCustomers);
