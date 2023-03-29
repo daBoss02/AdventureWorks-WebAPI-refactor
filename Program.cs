@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
 using WebApplication1.EntityMethods;
+using System;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,10 @@ var app = builder.Build();
 app.MapGet("/product", ProductMethods.GetProducts);
 app.MapGet("/productbyid", ProductMethods.GetProductById);
 app.MapDelete("/product/delete", ProductMethods.DeleteProduct);
+/*
+ * Put and Post will require a JSON Body to be executed
+ */
+app.MapPut("/product/update", ProductMethods.UpdateProduct);
 
 //Customers Methods
 app.MapGet("/customer", CustomerMethods.GetCustomers);
