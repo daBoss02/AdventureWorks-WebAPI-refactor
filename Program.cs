@@ -32,6 +32,7 @@ app.MapPut("/customer/update",CustomerMethods.UpdateCustomer);
 // Address METHODS
 app.MapGet("/address", AddressMethods.GetAddresses);
 app.MapGet("/addressbyid", AddressMethods.GetAddressById);
+app.MapGet("/address/details", AddressMethods.AddressDetails);
 app.MapDelete("/address/delete", AddressMethods.DeleteAddress);
 app.MapPost("/address", AddressMethods.CreateAddress);
 app.MapPut("/address/update", AddressMethods.UpdateAddress);
