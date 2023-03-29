@@ -1,4 +1,5 @@
-﻿using WebApplication1.Models;
+﻿using System.Reflection.PortableExecutable;
+using WebApplication1.Models;
 
 namespace WebApplication1.EntityMethods
 {
@@ -37,6 +38,24 @@ namespace WebApplication1.EntityMethods
             db.Addresses.Remove(address);
             db.SaveChanges();
             return Results.NoContent();
+        }
+
+        public static IResult CreateAddress(AdventureWorksLt2019Context db, Address inputAddress)
+        {
+            try
+            {
+                var newAddress = db.Addresses.Add(new Address
+                {
+                    
+                });
+
+                db.SaveChanges();
+                return Results.Ok(newAddress.Entity);
+
+            } catch (Exception ex)
+            {
+                return Results.Problem(ex.Message);
+            }
         }
     }
 }
