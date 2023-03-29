@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
 using WebApplication1.EntityMethods;
+using System;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,7 @@ app.MapGet("/product", ProductMethods.GetProducts);
 app.MapGet("/productbyid", ProductMethods.GetProductById);
 app.MapDelete("/product/delete", ProductMethods.DeleteProduct);
 app.MapPost("/product", ProductMethods.CreateProduct);
+app.MapPut("/product/update", ProductMethods.UpdateProduct);
 
 //Customers Methods
 app.MapGet("/customer", CustomerMethods.GetCustomers);
