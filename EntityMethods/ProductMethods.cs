@@ -65,7 +65,7 @@ namespace WebApplication1.EntityMethods
 
                 }).Where(p => p.ProductId == id);
 
-            if (product == null)
+            if (!product.Any())
             {
                 return Results.BadRequest();
             }

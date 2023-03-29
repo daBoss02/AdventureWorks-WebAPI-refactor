@@ -87,7 +87,35 @@ namespace WebApplication1.EntityMethods
 
                 db.SaveChanges();
                 return Results.Ok();
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(ex.Message);
+            }
+        }
+        
+        public static IResult UpdateSalesOrderHeader(AdventureWorksLt2019Context db, int id, SalesOrderHeader inputSalesOrderHeader)
+        {
+            try
+            {
+                SalesOrderHeader salesOrderHeaderToUpdate = db.SalesOrderHeaders.Find(id);
+                if (salesOrderHeaderToUpdate == null)
+                {
+                    var newSalesOrderHeader = db.SalesOrderHeaders.Add(new SalesOrderHeader
+                    {
+                       // put to do  
+                    });
+                    db.SaveChanges();
+                    return Results.Ok(newSalesOrderHeader);
+                }
+                else
+                {
+                    // put to do 
 
+                    salesOrderHeaderToUpdate.ModifiedDate = DateTime.Now;
+                    db.SaveChanges();
+                    return Results.Ok(salesOrderHeaderToUpdate);
+                }
             }
             catch (Exception ex)
             {
