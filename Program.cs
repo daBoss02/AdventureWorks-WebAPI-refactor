@@ -26,6 +26,7 @@ app.MapGet("/customer", CustomerMethods.GetCustomers);
 app.MapGet("/customerbyid", CustomerMethods.GetCustomerById);
 app.MapDelete("/customer/delete", CustomerMethods.DeleteCustomer);
 app.MapPost("/customer", CustomerMethods.CreateCustomer);
+app.MapPost("/customer/addtoaddress", CustomerMethods.CustomerAddToAddress);
 app.MapPut("/customer/update",CustomerMethods.UpdateCustomer);
 app.MapGet("/customer/details", CustomerMethods.CustomerDetails);
 
@@ -41,6 +42,7 @@ app.MapPut("/address/update", AddressMethods.UpdateAddress);
 app.MapGet("/salesheader", SalesOrderHeaderMethods.GetSalesOrderHeaders);
 app.MapGet("/salesheaderbyid", SalesOrderHeaderMethods.GetSalesOrderHeaderById);
 app.MapDelete("/salesheader/delete", SalesOrderHeaderMethods.DeleteSalesOrderHeader);
+app.MapPost("/salesheader", SalesOrderHeaderMethods.CreateSalesOrderHeader);
 app.MapPut("/salesheader/update",SalesOrderHeaderMethods.UpdateSalesOrderHeader);
 
 app.Run();

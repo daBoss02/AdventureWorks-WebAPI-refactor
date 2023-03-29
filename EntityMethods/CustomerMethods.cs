@@ -171,7 +171,40 @@ namespace WebApplication1.EntityMethods
 
             return Results.Ok(customer);
         }
-    }
 
-    
+        public static IResult CustomerAddToAddress(AdventureWorksLt2019Context db, int customerId, int addressId)
+        {
+            try
+            {
+                Address address = db.Addresses.Find(addressId);
+                Customer customer = db.Customers.Find(customerId);
+
+                if (address == null)
+                {
+                    return Results.BadRequest();
+                }
+                if (customer == null)
+                {
+                    return Results.BadRequest();
+                }
+
+                var newCustomerAddress = db.CustomerAddresses.Add(new CustomerAddress
+                {
+                    AddressId = addressId,
+                    CustomerId = customerId,
+                    AddressType = "Main Office",
+                    Rowguid = Guid.NewGuid(),
+                    ModifiedDate = DateTime.Now
+                });
+
+                db.SaveChanges();
+                return Results.Ok(newCustomerAddress.Entity);
+
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(ex.Message);
+            }
+        }
+    }
 }

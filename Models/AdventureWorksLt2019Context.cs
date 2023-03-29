@@ -521,7 +521,7 @@ public partial class AdventureWorksLt2019Context : DbContext
                 .HasComment("Date and time the record was last updated.")
                 .HasColumnType("datetime");
             entity.Property(e => e.OnlineOrderFlag)
-                .IsRequired()
+                .IsRequired(false)
                 .HasDefaultValueSql("((1))")
                 .HasComment("0 = Order placed by sales person. 1 = Order placed online by customer.");
             entity.Property(e => e.OrderDate)
@@ -531,7 +531,9 @@ public partial class AdventureWorksLt2019Context : DbContext
             entity.Property(e => e.PurchaseOrderNumber)
                 .HasMaxLength(25)
                 .HasComment("Customer purchase order number reference. ");
-            entity.Property(e => e.RevisionNumber).HasComment("Incremental number to track changes to the sales order over time.");
+            entity.Property(e => e.RevisionNumber)
+                .HasComment("Incremental number to track changes to the sales order over time.")
+                .HasDefaultValue("0");
             entity.Property(e => e.Rowguid)
                 .HasDefaultValueSql("(newid())")
                 .HasComment("ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.")
