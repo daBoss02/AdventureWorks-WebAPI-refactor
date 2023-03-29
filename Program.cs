@@ -42,6 +42,7 @@ app.MapPut("/address/update", AddressMethods.UpdateAddress);
 app.MapGet("/salesheader", SalesOrderHeaderMethods.GetSalesOrderHeaders);
 app.MapGet("/salesheaderbyid", SalesOrderHeaderMethods.GetSalesOrderHeaderById);
 app.MapDelete("/salesheader/delete", SalesOrderHeaderMethods.DeleteSalesOrderHeader);
+app.MapPost("/salesheader", SalesOrderHeaderMethods.CreateSalesOrderHeader);
 app.MapPut("/salesheader/update",SalesOrderHeaderMethods.UpdateSalesOrderHeader);
 
 app.Run();
