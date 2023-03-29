@@ -13,15 +13,14 @@ builder.Services.AddDbContext<AdventureWorksLt2019Context>(options => options.Us
 
 var app = builder.Build();
 
-
-// PRODUCT METHODS
+// Product METHODS
 app.MapGet("/product", ProductMethods.GetProducts);
 app.MapGet("/productbyid", ProductMethods.GetProductById);
 app.MapDelete("/product/delete", ProductMethods.DeleteProduct);
 app.MapPost("/product", ProductMethods.CreateProduct);
 app.MapPut("/product/update", ProductMethods.UpdateProduct);
 
-//Customers Methods
+// Customer METHODS
 app.MapGet("/customer", CustomerMethods.GetCustomers);
 app.MapGet("/customerbyid", CustomerMethods.GetCustomerById);
 app.MapDelete("/customer/delete", CustomerMethods.DeleteCustomer);
@@ -35,6 +34,5 @@ app.MapDelete("/address/delete", AddressMethods.DeleteAddress);
 app.MapGet("/salesheader", SalesOrderHeaderMethods.GetSalesOrderHeaders);
 app.MapGet("/salesheaderbyid", SalesOrderHeaderMethods.GetSalesOrderHeaderById);
 app.MapDelete("/salesheader/delete", SalesOrderHeaderMethods.DeleteSalesOrderHeader);
-
 
 app.Run();
