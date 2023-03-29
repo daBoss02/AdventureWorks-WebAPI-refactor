@@ -40,18 +40,49 @@ namespace WebApplication1.EntityMethods
 
         public static IResult ProductDetails(AdventureWorksLt2019Context db, int id) 
         {
-            Product product = db.Products
-                .Include(p => p.ProductCategory)
-                .Include(p => p.ProductModel)
-                .ThenInclude(pm => pm.ProductModelProductDescriptions)
-                .FirstOrDefault(p => p.ProductId == id);
+            //Product product = db.Products
+            //    .Include(p => p.ProductCategory)
+            //    .Include(p => p.ProductModel)
+            //    .ThenInclude(pm => pm.ProductModelProductDescriptions)
+            //    .FirstOrDefault(p => p.ProductId == id);
 
-            if (product == null)
-            {
-                return Results.BadRequest();
-            }
+            //var product = db.Products
+            //    .Select(p => new Product
+            //    {
+            //        ProductId = p.ProductId,
+            //        Name = p.Name,
+            //        ProductNumber = p.ProductNumber,
+            //        Color = p.Color,
+            //        StandardCost = p.StandardCost,
+            //        ListPrice = p.ListPrice,
+            //        Size = p.Size,
+            //        Weight = p.Weight,
+            //        ProductCategory = new ProductCategory
+            //        {
+            //            Name = p.ProductCategory.Name
+            //        },
+            //        ProductModelId = p.ProductModelId,
+            //        ProductModel = new ProductModel
+            //        {
+            //            Name = p.ProductModel.Name
+            //        },
+            //        SellStartDate = p.SellStartDate,
+            //        SellEndDate = p.SellEndDate,
+            //        DiscontinuedDate = p.DiscontinuedDate,
+            //        ThumbNailPhoto = p.ThumbNailPhoto,
+            //        ThumbnailPhotoFileName = p.ThumbnailPhotoFileName,
+            //        Rowguid = p.Rowguid,
+            //        ModifiedDate = p.ModifiedDate
+                    
+            //    });
 
-            return Results.Ok(product);
+            //if (product == null)
+            //{
+            //    return Results.BadRequest();
+            //}
+
+            //return Results.Ok(product);
+            return Results.Ok();
         }
     }
 }
