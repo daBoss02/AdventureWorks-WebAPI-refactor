@@ -40,49 +40,36 @@ namespace WebApplication1.EntityMethods
 
         public static IResult ProductDetails(AdventureWorksLt2019Context db, int id) 
         {
-            //Product product = db.Products
-            //    .Include(p => p.ProductCategory)
-            //    .Include(p => p.ProductModel)
-            //    .ThenInclude(pm => pm.ProductModelProductDescriptions)
-            //    .FirstOrDefault(p => p.ProductId == id);
+            var product = db.Products
+                .Select(p => new 
+                {
+                    ProductId = p.ProductId,
+                    Name = p.Name,
+                    ProductNumber = p.ProductNumber,
+                    Color = p.Color,
+                    StandardCost = p.StandardCost,
+                    ListPrice = p.ListPrice,
+                    Size = p.Size,
+                    Weight = p.Weight,
+                    ProductCategoryName = p.ProductCategory.Name,
+                    ProductModelName = p.ProductModel.Name,
+                    ProductDescription = p.ProductModel.ProductModelProductDescriptions.Select(pmd => pmd.ProductDescription.Description),
+                    SellStartDate = p.SellStartDate,
+                    SellEndDate = p.SellEndDate,
+                    DiscontinuedDate = p.DiscontinuedDate,
+                    ThumbNailPhoto = p.ThumbNailPhoto,
+                    ThumbnailPhotoFileName = p.ThumbnailPhotoFileName,
+                    Rowguid = p.Rowguid,
+                    ModifiedDate = p.ModifiedDate
 
-            //var product = db.Products
-            //    .Select(p => new Product
-            //    {
-            //        ProductId = p.ProductId,
-            //        Name = p.Name,
-            //        ProductNumber = p.ProductNumber,
-            //        Color = p.Color,
-            //        StandardCost = p.StandardCost,
-            //        ListPrice = p.ListPrice,
-            //        Size = p.Size,
-            //        Weight = p.Weight,
-            //        ProductCategory = new ProductCategory
-            //        {
-            //            Name = p.ProductCategory.Name
-            //        },
-            //        ProductModelId = p.ProductModelId,
-            //        ProductModel = new ProductModel
-            //        {
-            //            Name = p.ProductModel.Name
-            //        },
-            //        SellStartDate = p.SellStartDate,
-            //        SellEndDate = p.SellEndDate,
-            //        DiscontinuedDate = p.DiscontinuedDate,
-            //        ThumbNailPhoto = p.ThumbNailPhoto,
-            //        ThumbnailPhotoFileName = p.ThumbnailPhotoFileName,
-            //        Rowguid = p.Rowguid,
-            //        ModifiedDate = p.ModifiedDate
-                    
-            //    });
+                }).Where(p => p.ProductId == id);
 
-            //if (product == null)
-            //{
-            //    return Results.BadRequest();
-            //}
+            if (product == null)
+            {
+                return Results.BadRequest();
+            }
 
-            //return Results.Ok(product);
-            return Results.Ok();
+            return Results.Ok(product);
         }
     }
 }
