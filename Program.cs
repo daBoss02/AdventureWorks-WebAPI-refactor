@@ -18,9 +18,7 @@ var app = builder.Build();
 app.MapGet("/product", ProductMethods.GetProducts);
 app.MapGet("/productbyid", ProductMethods.GetProductById);
 app.MapDelete("/product/delete", ProductMethods.DeleteProduct);
-/*
- * Put and Post will require a JSON Body to be executed
- */
+app.MapPost("/product", ProductMethods.CreateProduct);
 app.MapPut("/product/update", ProductMethods.UpdateProduct);
 
 //Customers Methods

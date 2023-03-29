@@ -38,6 +38,31 @@ namespace WebApplication1.EntityMethods
             return Results.NoContent();
         }
 
+        public static IResult CreateProduct(AdventureWorksLt2019Context db, Product inputProduct)
+        {
+            try
+            {
+                var newProduct = db.Products.Add(new Product
+                {
+                    Name = inputProduct.Name ?? string.Empty,
+                    ProductNumber = inputProduct.ProductNumber ?? string.Empty,
+                    StandardCost = inputProduct.StandardCost != 0 ? inputProduct.StandardCost : 0,
+                    ListPrice = inputProduct.ListPrice != 0 ? inputProduct.ListPrice : 0,
+                    SellStartDate = inputProduct.SellStartDate != new DateTime() ? inputProduct.SellStartDate : new DateTime(),
+                    Rowguid = Guid.NewGuid(),
+                    ModifiedDate = DateTime.Now
+                });
+
+                db.SaveChanges();
+                return Results.Ok(newProduct.Entity);
+                
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(ex.Message);
+            }
+        }
+
         public static IResult UpdateProduct(AdventureWorksLt2019Context db, int id, Product inputProduct)
         {
             try
@@ -102,7 +127,7 @@ namespace WebApplication1.EntityMethods
             catch (Exception ex)
             {
                 return Results.Problem(ex.Message);
-            }            
+            }
         }
     }
 }
