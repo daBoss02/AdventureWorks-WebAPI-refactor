@@ -46,7 +46,14 @@ namespace WebApplication1.EntityMethods
             {
                 var newAddress = db.Addresses.Add(new Address
                 {
-                    
+                    AddressLine1 = inputAddress.AddressLine1,
+                    AddressLine2 = inputAddress.AddressLine2 ?? string.Empty,
+                    City = inputAddress.City,
+                    StateProvince= inputAddress.StateProvince,
+                    CountryRegion = inputAddress.CountryRegion,
+                    PostalCode = inputAddress.PostalCode,
+                    Rowguid = Guid.NewGuid(),
+                    ModifiedDate = DateTime.Now
                 });
 
                 db.SaveChanges();
