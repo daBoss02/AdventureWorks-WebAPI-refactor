@@ -125,6 +125,10 @@ namespace WebApplication1.EntityMethods
                     {
                         customerToUpdate.Phone = inputCustomer.Phone;
                     }
+                    if (!String.IsNullOrEmpty(inputCustomer.SalesPerson))
+                    {
+                        customerToUpdate.SalesPerson = inputCustomer.SalesPerson;
+                    }
 
                     customerToUpdate.ModifiedDate = DateTime.Now;
                     db.SaveChanges();
