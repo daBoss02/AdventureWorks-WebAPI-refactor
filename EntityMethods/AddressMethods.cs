@@ -125,5 +125,31 @@ namespace WebApplication1.EntityMethods
                 return Results.Problem(ex.Message);
             }
         }
+
+        public static IResult AddressDetails (AdventureWorksLt2019Context db, int id)
+        {
+            var address = db.CustomerAddresses
+                .Select(ca => new
+                {
+                    AddressId = ca.AddressId,
+                    AddressLine1 = ca.Address.AddressLine1,
+                    AddressLine2 = ca.Address.AddressLine2,
+                    City = ca.Address.City,
+                    StateProvince = ca.Address.StateProvince,
+                    CountryRegion = ca.Address.CountryRegion,
+                    PostalCode = ca.Address.PostalCode,
+                    ModifiedDate = ca.ModifiedDate,
+
+                    Customer = ca.Customer
+
+                }).Where(ca => ca.AddressId == id);
+
+            if (address == null)
+            {
+                return Results.BadRequest();
+            }
+
+            return Results.Ok(address);
+        }
     }
 }
