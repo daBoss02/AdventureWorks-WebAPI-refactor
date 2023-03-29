@@ -144,7 +144,7 @@ namespace WebApplication1.EntityMethods
 
                 }).Where(ca => ca.AddressId == id);
 
-            if (address == null)
+            if (!address.Any())
             {
                 return Results.BadRequest();
             }
