@@ -32,6 +32,7 @@ app.MapGet("/address", AddressMethods.GetAddresses);
 app.MapGet("/addressbyid", AddressMethods.GetAddressById);
 app.MapDelete("/address/delete", AddressMethods.DeleteAddress);
 app.MapPost("/address", AddressMethods.CreateAddress);
+app.MapPut("/address/update", AddressMethods.UpdateAddress);
 
 // Sales Order Header METHODS
 app.MapGet("/salesheader", SalesOrderHeaderMethods.GetSalesOrderHeaders);
