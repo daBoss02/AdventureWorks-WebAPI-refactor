@@ -1,4 +1,5 @@
-﻿using WebApplication1.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using WebApplication1.Models;
 
 namespace WebApplication1.EntityMethods
 {
@@ -35,6 +36,22 @@ namespace WebApplication1.EntityMethods
             db.Products.Remove(product);
             db.SaveChanges();
             return Results.NoContent();
+        }
+
+        public static IResult ProductDetails(AdventureWorksLt2019Context db, int id) 
+        {
+            Product product = db.Products
+                .Include(p => p.ProductCategory)
+                .Include(p => p.ProductModel)
+                .ThenInclude(pm => pm.ProductModelProductDescriptions)
+                .FirstOrDefault(p => p.ProductId == id);
+
+            if (product == null)
+            {
+                return Results.BadRequest();
+            }
+
+            return Results.Ok(product);
         }
     }
 }
