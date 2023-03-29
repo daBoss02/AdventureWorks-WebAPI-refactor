@@ -164,9 +164,9 @@ namespace WebApplication1.EntityMethods
                     Addressess = ca.Address
                 }).Where(ca => ca.CustomerId == id);
 
-            if (customer == null)
+            if (!customer.Any())
             {
-                return Results.BadRequest();
+                return Results.NotFound();
             }
 
             return Results.Ok(customer);
