@@ -112,6 +112,12 @@ namespace WebApplication1.EntityMethods
 
                     if (!String.IsNullOrEmpty(inputAddress.PostalCode))
                         addressToUpdate.PostalCode = inputAddress.PostalCode;
+
+                    // by default set modified date to DateTime.Now
+                    addressToUpdate.ModifiedDate = DateTime.Now;
+
+                    db.SaveChanges();
+                    return Results.Ok(addressToUpdate);
                 }
             }
             catch (Exception ex)
