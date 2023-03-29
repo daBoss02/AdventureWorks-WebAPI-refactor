@@ -166,7 +166,7 @@ namespace WebApplication1.EntityMethods
 
             if (!customer.Any())
             {
-                return Results.NotFound();
+                return Results.BadRequest();
             }
 
             return Results.Ok(customer);
