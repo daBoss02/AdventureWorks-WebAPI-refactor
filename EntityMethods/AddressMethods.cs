@@ -47,7 +47,7 @@ namespace WebApplication1.EntityMethods
                 var newAddress = db.Addresses.Add(new Address
                 {
                     AddressLine1 = inputAddress.AddressLine1 ?? string.Empty,
-                    AddressLine2 = inputAddress.AddressLine2 ?? string.Empty,
+                    AddressLine2 = inputAddress.AddressLine2 ?? null,
                     City = inputAddress.City ?? string.Empty,
                     StateProvince= inputAddress.StateProvince ?? string.Empty,
                     CountryRegion = inputAddress.CountryRegion ?? string.Empty,
