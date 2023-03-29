@@ -7,5 +7,36 @@ namespace WebApplication1.EntityMethods
         {
             return Results.Ok(db.Customers.Take(maxResults).ToList());
         }
+
+        public static IResult GetCustomerById(AdventureWorksLt2019Context db,int id)
+        {
+            Customer customer = db.Customers.Find(id);
+
+            if(customer == null)
+            {
+                return Results.BadRequest();
+            }
+            else
+            {
+                return Results.Ok(customer);
+            }
+        }
+        public static IResult DeleteCustomer(AdventureWorksLt2019Context db, int id)
+        {
+            Customer customer = db.Customers.Find(id);
+            
+
+            if (customer == null)
+            {
+                return Results.BadRequest();
+               
+            }
+            db.Customers.Remove(customer);
+            db.SaveChanges();
+            return Results.NoContent();
+        }
+
     }
+
+    
 }

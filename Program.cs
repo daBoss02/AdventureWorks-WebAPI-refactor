@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
 using WebApplication1.EntityMethods;
+using System;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,16 +13,26 @@ builder.Services.AddDbContext<AdventureWorksLt2019Context>(options => options.Us
 
 var app = builder.Build();
 
-
-// PRODUCT METHODS
+// Product METHODS
 app.MapGet("/product", ProductMethods.GetProducts);
 app.MapGet("/productbyid", ProductMethods.GetProductById);
- 
-//Customers Methods
+app.MapDelete("/product/delete", ProductMethods.DeleteProduct);
+app.MapPost("/product", ProductMethods.CreateProduct);
+app.MapPut("/product/update", ProductMethods.UpdateProduct);
+
+// Customer METHODS
 app.MapGet("/customer", CustomerMethods.GetCustomers);
+app.MapGet("/customerbyid", CustomerMethods.GetCustomerById);
+app.MapDelete("/customer/delete", CustomerMethods.DeleteCustomer);
 
 // Address METHODS
 app.MapGet("/address", AddressMethods.GetAddresses);
+app.MapGet("/addressbyid", AddressMethods.GetAddressById);
+app.MapDelete("/address/delete", AddressMethods.DeleteAddress);
 
+// Sales Order Header METHODS
+app.MapGet("/salesheader", SalesOrderHeaderMethods.GetSalesOrderHeaders);
+app.MapGet("/salesheaderbyid", SalesOrderHeaderMethods.GetSalesOrderHeaderById);
+app.MapDelete("/salesheader/delete", SalesOrderHeaderMethods.DeleteSalesOrderHeader);
 
 app.Run();

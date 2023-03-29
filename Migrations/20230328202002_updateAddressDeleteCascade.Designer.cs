@@ -12,8 +12,8 @@ using WebApplication1.Models;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(AdventureWorksLt2019Context))]
-    [Migration("20230328163236_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230328202002_updateAddressDeleteCascade")]
+    partial class updateAddressDeleteCascade
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1005,11 +1005,13 @@ namespace WebApplication1.Migrations
                     b.HasOne("WebApplication1.Models.Address", "Address")
                         .WithMany("CustomerAddresses")
                         .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("WebApplication1.Models.Customer", "Customer")
                         .WithMany("CustomerAddresses")
                         .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Address");
