@@ -1,4 +1,6 @@
-﻿using WebApplication1.Models;
+﻿using System.Net.Mail;
+using System.Numerics;
+using WebApplication1.Models;
 namespace WebApplication1.EntityMethods
 {
     public  static class CustomerMethods
@@ -141,6 +143,34 @@ namespace WebApplication1.EntityMethods
             }
         }
 
+        public static IResult CustomerDetails(AdventureWorksLt2019Context db ,int id)
+        {
+            var customer = db.CustomerAddresses
+                .Select(ca => new
+                {
+                    CustomerId = ca.CustomerId,
+                    NameStyle = ca.Customer.NameStyle,
+                    Title = ca.Customer.Title,
+                    FirstName = ca.Customer.FirstName,
+                    MiddleName = ca.Customer.MiddleName,
+                    LastName = ca.Customer.LastName,
+                    Suffix = ca.Customer.Suffix,
+                    CompanyName = ca.Customer.CompanyName,
+                    SalesPerson = ca.Customer.SalesPerson,
+                    EmailAddress = ca.Customer.EmailAddress,
+                    Phone = ca.Customer.Phone,
+                    Rowguid = ca.Customer.Rowguid,
+                    ModifiedDate = ca.Customer.ModifiedDate,
+                    Addressess = ca.Address
+                }).Where(ca => ca.CustomerId == id);
+
+            if (customer == null)
+            {
+                return Results.BadRequest();
+            }
+
+            return Results.Ok(customer);
+        }
     }
 
     
