@@ -16,6 +16,7 @@ var app = builder.Build();
 // Product METHODS
 app.MapGet("/product", ProductMethods.GetProducts);
 app.MapGet("/productbyid", ProductMethods.GetProductById);
+app.MapGet("/product/details", ProductMethods.ProductDetails);
 app.MapDelete("/product/delete", ProductMethods.DeleteProduct);
 app.MapPost("/product", ProductMethods.CreateProduct);
 app.MapPut("/product/update", ProductMethods.UpdateProduct);
