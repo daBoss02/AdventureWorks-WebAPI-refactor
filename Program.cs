@@ -3,6 +3,7 @@ using WebApplication1.Models;
 using WebApplication1.EntityMethods;
 using System;
 using Microsoft.AspNetCore.Mvc;
+using AdventureWorks_WebAPI_refactor.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AdventureWorksLt2019Context>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AdventureWorksLt2019Context")));
+
+
 
 var app = builder.Build();
 
@@ -29,6 +32,9 @@ app.MapPost("/customer", CustomerMethods.CreateCustomer);
 app.MapPost("/customer/addtoaddress", CustomerMethods.CustomerAddToAddress);
 app.MapPut("/customer/update",CustomerMethods.UpdateCustomer);
 app.MapGet("/customer/details", CustomerMethods.CustomerDetails);
+
+
+
 
 // Address METHODS
 app.MapGet("/address", AddressMethods.GetAddresses);

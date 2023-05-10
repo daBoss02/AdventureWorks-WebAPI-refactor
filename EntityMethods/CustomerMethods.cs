@@ -1,20 +1,49 @@
-﻿using System.Net.Mail;
+﻿using AdventureWorks_WebAPI_refactor.Data;
+using System.Net.Mail;
 using System.Numerics;
 using WebApplication1.Models;
 namespace WebApplication1.EntityMethods
 {
     public  static class CustomerMethods
     {
-        public static IResult GetCustomers(AdventureWorksLt2019Context db,int maxResults = 100)
+        //public static IResult GetCustomers(AdventureWorksLt2019Context db,int maxResults = 100)
+        //{
+        //    return Results.Ok(db.Customers.Take(maxResults).ToList());
+        //}
+
+        public static IResult GetCustomers(ICustomerRepo Repo, int? id, int maxResults = 100)
         {
-            return Results.Ok(db.Customers.Take(maxResults).ToList());
+            if (id == null)
+            {
+                return Results.Ok(Repo.GetCustomers());
+            }
+            else
+            {
+                return Results.Ok(Repo.GetCustomer((int)id));
+            }
         }
 
-        public static IResult GetCustomerById(AdventureWorksLt2019Context db,int id)
-        {
-            Customer customer = db.Customers.Find(id);
 
-            if(customer == null)
+
+        //public static IResult GetCustomerById(AdventureWorksLt2019Context db,int id)
+        //{
+        //    Customer customer = db.Customers.Find(id);
+
+        //    if(customer == null)
+        //    {
+        //        return Results.BadRequest();
+        //    }
+        //    else
+        //    {
+        //        return Results.Ok(customer);
+        //    }
+        //}
+
+        public static IResult GetCustomerById(CustomerRepo Repo, int id)
+        {
+            Customer customer = Repo.GetCustomer(id);
+
+            if (customer == null)
             {
                 return Results.BadRequest();
             }
@@ -23,6 +52,7 @@ namespace WebApplication1.EntityMethods
                 return Results.Ok(customer);
             }
         }
+
         public static IResult DeleteCustomer(AdventureWorksLt2019Context db, int id)
         {
             Customer customer = db.Customers.Find(id);
