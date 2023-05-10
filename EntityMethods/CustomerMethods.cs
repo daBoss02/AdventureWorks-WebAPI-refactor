@@ -39,6 +39,8 @@ namespace WebApplication1.EntityMethods
         //    }
         //}
 
+
+
         public static IResult GetCustomerById(CustomerRepo Repo, int id)
         {
             Customer customer = Repo.GetCustomer(id);
@@ -53,24 +55,9 @@ namespace WebApplication1.EntityMethods
             }
         }
 
-        public static IResult DeleteCustomer(AdventureWorksLt2019Context db, int id)
-        {
-            Customer customer = db.Customers.Find(id);
-
-
-            if (customer == null)
-            {
-                return Results.BadRequest();
-
-            }
-            db.Customers.Remove(customer);
-            db.SaveChanges();
-            return Results.NoContent();
-        }
-
-        //public static IResult DeleteCustomer(CustomerRepo Repo, int id)
+        //public static IResult DeleteCustomer(AdventureWorksLt2019Context db, int id)
         //{
-        //    Customer customer = Repo.DeleteCustomer.Find(id);
+        //    Customer customer = db.Customers.Find(id);
 
 
         //    if (customer == null)
@@ -78,10 +65,24 @@ namespace WebApplication1.EntityMethods
         //        return Results.BadRequest();
 
         //    }
-        //    Repo.Customers.Remove(customer);
-        //    Repo.SaveChanges();
+        //    db.Customers.Remove(customer);
+        //    db.SaveChanges();
         //    return Results.NoContent();
         //}
+
+        public static IResult DeleteCustomer(CustomerRepo Repo, Customer customer)
+        {
+            
+
+            if (customer == null)
+            {
+                return Results.NotFound();
+
+            }
+            Repo.DeleteCustomer(customer);
+            
+            return Results.Ok("Customer deleted successfully");
+        }
 
 
 
