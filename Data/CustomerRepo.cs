@@ -20,6 +20,7 @@ namespace AdventureWorks_WebAPI_refactor.Data
             return _context.Customers.Find(id);
         }
 
+
         public Customer CreateCustomer(Customer customer)
         {
             Customer newCustomer = new Customer
@@ -36,9 +37,9 @@ namespace AdventureWorks_WebAPI_refactor.Data
                 Rowguid = Guid.NewGuid(),
                 ModifiedDate = DateTime.Now
             };
-            _context.Add(newCustomer);
-            _context.SaveChanges();
-            return newCustomer;
+          _context.Add(newCustomer);
+          _context.SaveChanges();
+          return newCustomer;
         }
         public Customer UpdateCustomer(Customer inputCustomer, int id)
         {
@@ -86,6 +87,7 @@ namespace AdventureWorks_WebAPI_refactor.Data
                 {
                     customerToUpdate.SalesPerson = inputCustomer.SalesPerson;
                 }
+
 
                 customerToUpdate.ModifiedDate = DateTime.Now;
 

@@ -118,7 +118,6 @@ namespace WebApplication1.EntityMethods
         {
             try
             {
-
                 var newCustomer = Repo.CreateCustomer(iCustomer);
                
                 return Results.Ok(newCustomer);
