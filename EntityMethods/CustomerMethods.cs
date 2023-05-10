@@ -118,7 +118,7 @@ namespace WebApplication1.EntityMethods
         {
             try
             {
-                var newCustomer = Repo.CreateCustomer.Add(new Customer
+                var newCustomer = Repo.CreateCustomer(new Customer
                 {
                     Title = inputCustomer.Title ?? string.Empty,
                     FirstName = inputCustomer.FirstName ?? string.Empty,
