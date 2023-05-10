@@ -1,6 +1,14 @@
-﻿namespace AdventureWorks-WebAPI-refactor.Data
+﻿using WebApplication1.Models;
+
+namespace AdventureWorks_WebAPI_refactor.Data
 {
-    public class ICustomerRepo
+    public interface ICustomerRepo
 {
+    public ICollection<Customer> GetCustomers();
+
+    public Customer GetCustomer(int id);
+    public void CreateCustomer(CustomerRepo customer);
+
+
 }
 }
