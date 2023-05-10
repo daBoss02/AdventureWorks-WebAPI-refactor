@@ -7,8 +7,8 @@ namespace AdventureWorks_WebAPI_refactor.Data
     public ICollection<Customer> GetCustomers();
 
     public Customer GetCustomer(int id);
-    public void CreateCustomer(Customer customer);
-
+    public Customer CreateCustomer(CustomerRepo customer);
+    public void UpdateCustomer(Customer customer);
 
 }
 }
