@@ -56,23 +56,69 @@ namespace WebApplication1.EntityMethods
         public static IResult DeleteCustomer(AdventureWorksLt2019Context db, int id)
         {
             Customer customer = db.Customers.Find(id);
-            
+
 
             if (customer == null)
             {
                 return Results.BadRequest();
-               
+
             }
             db.Customers.Remove(customer);
             db.SaveChanges();
             return Results.NoContent();
         }
 
-        public static IResult CreateCustomer(AdventureWorksLt2019Context db, Customer inputCustomer)
+        //public static IResult DeleteCustomer(CustomerRepo Repo, int id)
+        //{
+        //    Customer customer = Repo.DeleteCustomer.Find(id);
+
+
+        //    if (customer == null)
+        //    {
+        //        return Results.BadRequest();
+
+        //    }
+        //    Repo.Customers.Remove(customer);
+        //    Repo.SaveChanges();
+        //    return Results.NoContent();
+        //}
+
+
+
+        //public static IResult CreateCustomer(AdventureWorksLt2019Context db, Customer inputCustomer)
+        //{
+        //    try
+        //    {
+        //        var newCustomer = db.Customers.Add(new Customer
+        //        {
+        //            Title = inputCustomer.Title ?? string.Empty,
+        //            FirstName = inputCustomer.FirstName ?? string.Empty,
+        //            MiddleName = inputCustomer.MiddleName ?? string.Empty,
+        //            LastName = inputCustomer.LastName ?? string.Empty,
+        //            EmailAddress = inputCustomer.EmailAddress ?? string.Empty,
+        //            Phone = inputCustomer.Phone ?? string.Empty,
+        //            Suffix = inputCustomer.Suffix ?? string.Empty,
+        //            CompanyName = inputCustomer.CompanyName ?? string.Empty,
+        //            SalesPerson = inputCustomer.SalesPerson ?? string.Empty,
+        //            Rowguid = Guid.NewGuid(),
+        //            ModifiedDate = DateTime.Now
+        //        });
+
+        //        db.SaveChanges();
+        //        return Results.Ok(newCustomer.Entity);
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Results.Problem(ex.Message);
+        //    }
+        //}
+
+        public static IResult CreateCustomer(CustomerRepo Repo, Customer inputCustomer)
         {
             try
             {
-                var newCustomer = db.Customers.Add(new Customer
+                var newCustomer = Repo.CreateCustomer.Add(new Customer
                 {
                     Title = inputCustomer.Title ?? string.Empty,
                     FirstName = inputCustomer.FirstName ?? string.Empty,
@@ -96,6 +142,8 @@ namespace WebApplication1.EntityMethods
                 return Results.Problem(ex.Message);
             }
         }
+
+
 
         public static IResult UpdateCustomer(AdventureWorksLt2019Context db, int id, Customer inputCustomer)
         {
