@@ -20,10 +20,27 @@ namespace AdventureWorks_WebAPI_refactor.Data
         return _context.Customers.Find(id);
     }
 
-    public void CreateCustomer(Customer customer)
+    public Customer CreateCustomer(Customer customer)
     {
-        _context.Add(customer);
-        _context.SaveChanges();
+            Customer newCustomer = new Customer
+               {
+                Title = customer.Title ?? string.Empty,
+                FirstName = customer.FirstName ?? string.Empty,
+                MiddleName = customer.MiddleName ?? string.Empty,
+                LastName = customer.LastName ?? string.Empty,
+                EmailAddress = customer.EmailAddress ?? string.Empty,
+                Phone = customer.Phone ?? string.Empty,
+                Suffix = customer.Suffix ?? string.Empty,
+                CompanyName = customer.CompanyName ?? string.Empty,
+                SalesPerson = customer.SalesPerson ?? string.Empty,
+                Rowguid = Guid.NewGuid(),
+                ModifiedDate = DateTime.Now
+            };
+            _context.Add(newCustomer);
+            _context.SaveChanges();
+            return newCustomer;
+
+            
 
     }
 }

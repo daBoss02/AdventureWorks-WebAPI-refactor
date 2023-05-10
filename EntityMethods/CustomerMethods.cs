@@ -114,27 +114,13 @@ namespace WebApplication1.EntityMethods
         //    }
         //}
 
-        public static IResult CreateCustomer(CustomerRepo Repo, Customer inputCustomer)
+        public static IResult CreateCustomer(CustomerRepo Repo, Customer iCustomer)
         {
             try
             {
-                var newCustomer = Repo.CreateCustomer.Add(new Customer
-                {
-                    Title = inputCustomer.Title ?? string.Empty,
-                    FirstName = inputCustomer.FirstName ?? string.Empty,
-                    MiddleName = inputCustomer.MiddleName ?? string.Empty,
-                    LastName = inputCustomer.LastName ?? string.Empty,
-                    EmailAddress = inputCustomer.EmailAddress ?? string.Empty,
-                    Phone = inputCustomer.Phone ?? string.Empty,
-                    Suffix = inputCustomer.Suffix ?? string.Empty,
-                    CompanyName = inputCustomer.CompanyName ?? string.Empty,
-                    SalesPerson = inputCustomer.SalesPerson ?? string.Empty,
-                    Rowguid = Guid.NewGuid(),
-                    ModifiedDate = DateTime.Now
-                });
-
-                db.SaveChanges();
-                return Results.Ok(newCustomer.Entity);
+                var newCustomer = Repo.CreateCustomer(iCustomer);
+               
+                return Results.Ok(newCustomer);
 
             }
             catch (Exception ex)
